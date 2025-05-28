@@ -1,0 +1,38 @@
+-- DML (data manipulation language), insert, update, delete
+
+INSERT INTO users VALUES ('abc@fakemail.com', '22', '99991', '111-111-1111', true, true);
+INSERT INTO users VALUES ('def@fakemail.com', '24', '99992', '222-222-2222', true, false);
+INSERT INTO users VALUES ('ghi@fakemail.com', '26', '99993', '333-333-3333', false, false);
+INSERT INTO users VALUES ('jkl@fakemail.com', '28', '99994', '444-444-4444', false, true);
+INSERT INTO users VALUES ('mno@fakemail.com', '30', '99995', '555-555-5555', false, false);
+
+UPDATE users 
+SET birthdate = '2003-01-15'
+WHERE email = 'abc@fakemail.com';
+
+UPDATE users 
+SET birthdate = '2001-02-15'
+WHERE email = 'def@fakemail.com';
+
+UPDATE users 
+SET birthdate = '1999-03-15'
+WHERE email = 'ghi@fakemail.com';
+
+UPDATE users 
+SET birthdate = '1997-04-15'
+WHERE email = 'jkl@fakemail.com';
+
+UPDATE users 
+SET birthdate = '1995-05-15'
+WHERE email = 'mno@fakemail.com';
+
+UPDATE users -- does the same thing but in a single command
+SET birthdate = CASE email
+                    WHEN 'abc@fakemail.com' THEN '2003-01-15 BC'
+                    WHEN 'def@fakemail.com' THEN '2001-02-15 BC'
+                    WHEN 'ghi@fakemail.com' THEN '1999-03-15 BC'
+                    WHEN 'jkl@fakemail.com' THEN '1997-04-15 BC'
+                    WHEN 'mno@fakemail.com' THEN '1995-05-15 BC'
+                    ELSE birthdate -- This keeps the original birthdate for other rows if they exist
+                END
+WHERE email IN ('abc@fakemail.com', 'def@fakemail.com', 'ghi@fakemail.com', 'jkl@fakemail.com', 'mno@fakemail.com');
