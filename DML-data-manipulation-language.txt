@@ -28,11 +28,11 @@ WHERE email = 'mno@fakemail.com';
 
 UPDATE users -- does the same thing but in a single command
 SET birthdate = CASE email
-                    WHEN 'abc@fakemail.com' THEN '2003-01-15 BC'
-                    WHEN 'def@fakemail.com' THEN '2001-02-15 BC'
-                    WHEN 'ghi@fakemail.com' THEN '1999-03-15 BC'
-                    WHEN 'jkl@fakemail.com' THEN '1997-04-15 BC'
-                    WHEN 'mno@fakemail.com' THEN '1995-05-15 BC'
+                    WHEN 'abc@fakemail.com' THEN '2003-01-15'
+                    WHEN 'def@fakemail.com' THEN '2001-02-15'
+                    WHEN 'ghi@fakemail.com' THEN '1999-03-15'
+                    WHEN 'jkl@fakemail.com' THEN '1997-04-15'
+                    WHEN 'mno@fakemail.com' THEN '1995-05-15'
                     ELSE birthdate -- This keeps the original birthdate for other rows if they exist
                 END
 WHERE email IN ('abc@fakemail.com', 'def@fakemail.com', 'ghi@fakemail.com', 'jkl@fakemail.com', 'mno@fakemail.com');
