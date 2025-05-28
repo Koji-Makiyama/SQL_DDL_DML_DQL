@@ -1,0 +1,16 @@
+-- DDL (data definition language), create/alter/drop
+CREATE TABLE users -- creates a table with various data types
+(
+email VARCHAR(50) NOT NULL PRIMARY KEY,
+age SMALLINT,
+user_code INT,
+phone_no VARCHAR(20),
+newsletter BOOLEAN NOT NULL DEFAULT false,
+text_notifications BOOLEAN NOT NULL DEFAULT false
+);
+
+ALTER TABLE users
+ADD COLUMN birthdate DATE NOT NULL DEFAULT '0001-01-01'; -- adds the column birthdate to the table
+
+TRUNCATE TABLE users; -- deletes all data rows without logging
+DROP TABLE IF EXISTS users; -- deletes the table if it exists
