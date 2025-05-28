@@ -1,0 +1,7 @@
+-- DQL (data query language), e.g. SELECT
+SELECT email, age, phone_no -- a simple query
+FROM users
+WHERE age >= 21
+AND age BETWEEN 21 AND 30
+AND email LIKE '%@%'
+ORDER BY age DESC
